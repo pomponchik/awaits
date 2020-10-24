@@ -5,12 +5,12 @@ from awaits.common_data import CommonData
 from awaits.errors import IncorrectUseOfTheDecoratorError
 
 
-def shoot(*args, room=None):
+def shoot(*args, pool=None):
     def wrapper_of_wrapper(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            room_name = 'base' if room is None else room
-            task = RoomKeeper().room[room_name].do(func, *args, **kwargs)
+            pool_name = 'base' if pool is None else pool
+            task = RoomKeeper().room[pool_name].do(func, *args, **kwargs)
             return task
         return wrapper
     # Определяем, как вызван декоратор - как фабрика декораторов (т. е. без позиционных аргументов) или как непосредственный декоратор.

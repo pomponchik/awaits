@@ -5,13 +5,13 @@ from awaits.common_data import CommonData
 from awaits.errors import IncorrectUseOfTheDecoratorError
 
 
-def awaitable(*args, room=None, delay=None):
+def awaitable(*args, pool=None, delay=None):
     def wrapper_of_wrapper(func):
         @wraps(func)
         async def wrapper(*args, **kwargs):
-            room_name = 'base' if room is None else room
+            pool_name = 'base' if pool is None else pool
             sleep_time = CommonData().delay if delay is None else delay
-            task = RoomKeeper().room[room_name].do(func, *args, **kwargs)
+            task = RoomKeeper().room[pool_name].do(func, *args, **kwargs)
             while not task.done:
                 await sleep(sleep_time)
             if task.error:
