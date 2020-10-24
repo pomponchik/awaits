@@ -242,7 +242,7 @@ def heavy_math_function(x, y):
 Кроме того, отдельным параметром вы можете указать имя группы потоков, в которой вы хотите чтобы выполнялся код. По умолчанию используется группа ```"base"```.
 
 ```python
-@awaitable(room='gravities')
+@awaitable(pool='gravities')
 def heavy_math_function(x, y):
   return x * y
 ```
@@ -270,9 +270,11 @@ print(task.result)
 При необходимости, вы можете указать название группы потоков, в котором хотите, чтобы выполнялась ваша функция:
 
 ```python
-@shoot(room='gravities')
+@shoot(pool='gravities')
 def other_heavy_math_function(x, y):
   return x * y
 ```
+
+По умолчанию также используется группа ```"base"```.
 
 ## Настройки
