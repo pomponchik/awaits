@@ -3,14 +3,14 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
-requirements = ['pony==0.7.13', 'ujson==3.0.0']
+requirements = []
 
 setup(
-    name="polog",
-    version="0.0.7",
+    name="awaits",
+    version="0.0.1",
     author="Evgeniy Blinov",
     author_email="zheni-b@yandex.ru",
-    description="Polog - ультимативный логгер для баз данных.",
+    description="async + threads + decorators = ?",
     long_description=readme,
     long_description_content_type="text/markdown",
     url="https://github.com/pomponchik/polog",
