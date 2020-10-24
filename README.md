@@ -22,7 +22,7 @@
 
 ## Быстрый старт
 
-Установите awaitable через [pip](https://pypi.org/project/awaitable/):
+Установите awaits через [pip](https://pypi.org/project/awaitable/):
 
 ```
 pip install awaits
