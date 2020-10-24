@@ -1,0 +1,9 @@
+.idea
+virt
+.DS_Store
+test.py
+test2.py
+__pycache__
+*.egg-info
+dist
+build
