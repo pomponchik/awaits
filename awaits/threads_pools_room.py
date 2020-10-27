@@ -1,4 +1,4 @@
-from awaits.threads_pool import ThreadsPool
+from awaits.pools.threads_pool import ThreadsPool
 
 
 class ThreadsPoolsRoom:

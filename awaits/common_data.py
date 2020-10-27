@@ -1,6 +1,6 @@
 class CommonData:
     pool_size = 10
-    delay = 0.001
+    delay = 0.01
 
     def __init__(self, **kwargs):
         for key, value in kwargs.items():

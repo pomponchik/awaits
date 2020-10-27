@@ -1,0 +1,2 @@
+class AbstractUnit:
+    pass

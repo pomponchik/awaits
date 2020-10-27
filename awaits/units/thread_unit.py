@@ -1,4 +1,7 @@
-class ThreadUnit:
+from awaits.units.abstract_unit import AbstractUnit
+
+
+class ThreadUnit(AbstractUnit):
     """
     Экземпляр класса соответствует одному потоку. Здесь выполняются таски.
     """
@@ -15,5 +18,6 @@ class ThreadUnit:
             try:
                 task = self.queue.get()
                 task.do()
+                self.queue.task_done()
             except Exception as e:
                 pass

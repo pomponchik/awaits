@@ -27,7 +27,7 @@
 Установите awaits через [pip](https://pypi.org/project/awaits/):
 
 ```
-pip install awaits
+$ pip install awaits
 ```
 
 Теперь просто импортируйте декоратор [```@awaitable```](#декоратор-awaitable) и примените его к вашей функции. Никаких настроек, ничего лишнего - все уже работает:
@@ -86,7 +86,7 @@ hello()
 Группа потоков - это экземпляр класса ```ThreadsPool```. Импортируем его:
 
 ```python
-from awaits.threads_pool import ThreadsPool
+from awaits.pools.threads_pool import ThreadsPool
 ```
 
 При инициализации экземпляра будут созданы потоки. Число потоков в группе вы указываете в конструкторе класса:
