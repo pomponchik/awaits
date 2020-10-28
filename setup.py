@@ -7,7 +7,7 @@ requirements = []
 
 setup(
     name="awaits",
-    version="0.0.1",
+    version="0.0.2",
     author="Evgeniy Blinov",
     author_email="zheni-b@yandex.ru",
     description="async + threads + decorators = ?",

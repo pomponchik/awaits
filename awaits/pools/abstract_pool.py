@@ -21,12 +21,6 @@ class AbstractPool:
         self.put_to_queue(task)
         return task
 
-    def create_worker(self, index):
-        where = self.get_where_to_execute()
-        worker_class = self.get_worker_class()
-        worker = where(target=worker_class(self.queue, self, index).run)
-        return worker
-
     def create_workers(self, number_of_workers=None, base_number=0):
         number_of_workers = self.pool_size if number_of_workers is None else number_of_workers
         workers = []
@@ -34,6 +28,9 @@ class AbstractPool:
             worker = self.create_worker(number)
             workers.append(worker)
         return workers
+
+    def create_worker(self, index):
+        raise NotImplementedError('The create workers operation is not defined.')
 
     def activate_workers(self, workers=None):
         raise NotImplementedError('The activate workers operation is not defined.')

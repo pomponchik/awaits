@@ -1,14 +1,13 @@
-from queue import Queue
-from threading import Thread
-from awaits.units.thread_unit import ThreadUnit
+from multiprocessing import Process, Queue, freeze_support
+import time
+from awaits.units.process_unit import ProcessUnit
 from awaits.pools.abstract_pool import AbstractPool
 
 
+def test():
+    print('hello')
 
-import multiprocessing
-from awaits.units.process_unit import ProcessUnit
-
-class ThreadsPool(AbstractPool):
+class ProcessesPool(AbstractPool):
     def queue_size(self):
         """
         ПРИМЕРНЫЙ размер очереди, см. документацию:
@@ -18,26 +17,35 @@ class ThreadsPool(AbstractPool):
         return size
 
     def get_queue_class(self):
+        freeze_support()
         return Queue
 
     def get_where_to_execute(self):
-        return Thread
+        return Process
 
     def get_worker_class(self):
-        return ThreadUnit
+        return ProcessUnit
 
     def put_to_queue(self, task):
-        self.queue.put_nowait(task)
+        function = task.function
+        function_name = function.__name__
+        function_module = function.__module__
+        subtask = {'function_name': function_name, 'function_module': function_module, 'args': task.args, 'kwargs': task.kwargs}
+        self.queue.put(subtask)
 
     def activate_workers(self, workers=None):
         if not workers:
             workers = self.workers
+        print(workers)
         for worker in workers:
+            print(worker)
+            #time.sleep(3)
             worker.daemon = True
             worker.start()
 
     def create_worker(self, index):
         where = self.get_where_to_execute()
         worker_class = self.get_worker_class()
-        worker = where(target=worker_class(self.queue, self, index).run)
+        worker = Process(target=test, args=())
+        print(worker)
         return worker
