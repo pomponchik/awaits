@@ -1,4 +1,4 @@
-from multiprocessing import Process, Queue, freeze_support
+from multiprocessing import Process, Queue, current_process
 import time
 from awaits.units.process_unit import ProcessUnit
 from awaits.pools.abstract_pool import AbstractPool
@@ -17,7 +17,6 @@ class ProcessesPool(AbstractPool):
         return size
 
     def get_queue_class(self):
-        freeze_support()
         return Queue
 
     def get_where_to_execute(self):
@@ -34,18 +33,18 @@ class ProcessesPool(AbstractPool):
         self.queue.put(subtask)
 
     def activate_workers(self, workers=None):
-        if not workers:
+        if workers is None:
             workers = self.workers
-        print(workers)
+        if current_process().name != 'MainProcess':
+            return
         for worker in workers:
-            print(worker)
             #time.sleep(3)
             worker.daemon = True
             worker.start()
+        #raise ValueError
+
 
     def create_worker(self, index):
-        where = self.get_where_to_execute()
-        worker_class = self.get_worker_class()
         worker = Process(target=test, args=())
-        print(worker)
+        #print(worker)
         return worker
