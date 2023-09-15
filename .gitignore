@@ -1,10 +1,9 @@
 .idea
 virt
 .DS_Store
-test.py
-test2.py
-test*.py
 __pycache__
 *.egg-info
 dist
 build
+venv
+.pytest_cache

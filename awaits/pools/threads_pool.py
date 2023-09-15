@@ -4,10 +4,6 @@ from awaits.units.thread_unit import ThreadUnit
 from awaits.pools.abstract_pool import AbstractPool
 
 
-
-import multiprocessing
-from awaits.units.process_unit import ProcessUnit
-
 class ThreadsPool(AbstractPool):
     def queue_size(self):
         """

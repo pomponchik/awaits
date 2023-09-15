@@ -1,5 +1,12 @@
 # awaits - делаем работу с асинхронными / многопоточными приложениями проще
 
+[![Downloads](https://static.pepy.tech/badge/awaits/month)](https://pepy.tech/project/awaits)
+[![Downloads](https://static.pepy.tech/badge/awaits)](https://pepy.tech/project/awaits)
+[![codecov](https://codecov.io/gh/pomponchik/awaits/graph/badge.svg?token=A5VJ4PUED7)](https://codecov.io/gh/pomponchik/awaits)
+[![Test-Package](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml/badge.svg)](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml)
+[![Python versions](https://img.shields.io/pypi/pyversions/awaits.svg)](https://pypi.python.org/pypi/awaits)
+[![PyPI version](https://badge.fury.io/py/awaits.svg)](https://badge.fury.io/py/awaits)
+
 Данная библиотека решает 3 проблемы:
 
 - Асинхронное программирование с использованием синтаксиса async / await теряет смысл, если в коде часто встречаются куски с "тяжелыми" вычислениями или иными задачами, которые блокируют event-loop. Зато теперь вы можете навесить на такую "тяжелую" функцию декоратор [```@awaitable```](#декоратор-awaitable) и она станет корутиной, которая будет исполняться в отдельном потоке, не блокируя event-loop. Во всем остальном это будет совершенно обычная корутина.
@@ -7,7 +14,6 @@
 - Частое создание потоков в программе требует постоянно отслеживать создание потоков и управление ими. Здесь же минимальным уровнем абстракции для вас становится группа потоков (pool of threads), а не какой-то отдельный поток. Ими становится удобно управлять в рамках т. н. "комнат" (rooms) с такими группами, где каждой группе присваивается имя.
 
 Прочитайте документацию ниже, чтобы увидеть, как все это работает.
-
 
 
 ## Оглавление
@@ -34,7 +40,7 @@ $ pip install awaits
 
 ```python
 import asyncio
-from awaits.awaitable import awaitable
+from awaits import awaitable
 
 
 @awaitable
@@ -51,7 +57,7 @@ print(asyncio.run(sum(2, 2)))
 Если ваша функция ничего не возвращает, к ней можно применить другой декоратор, [```@shoot```](#декоратор-shoot):
 
 ```python
-from awaits.shoot import shoot
+from awaits import shoot
 
 
 @shoot
@@ -212,7 +218,7 @@ if task.error:
 Декоратор ```@awaitable``` превращает обычную функцию в корутину, т. е. в функцию, с которой можно работать через await-синтаксис Python. Давайте попробуем создать такую функцию:
 
 ```python
-from awaits.awaitable import awaitable
+from awaits import awaitable
 
 
 @awaitable
@@ -252,7 +258,7 @@ def heavy_math_function(x, y):
 Этот декоратор проще, чем [```@awaitable```](#декоратор-awaitable). Обернутая им функция будет просто "отстрелена" в группу потоков, без ожидания результата. Возвращен при этом будет объект класса [```Task```](#об-объекте-задачи), что позволяет вручную отслеживать статус выполнения.
 
 ```python
-from awaits.shoot import shoot
+from awaits import shoot
 
 
 @shoot
@@ -284,7 +290,7 @@ def other_heavy_math_function(x, y):
 Вы можете настроить параметры по умолчанию самостоятельно. Для этого необходимо вызвать метод ```set``` у класса ```config```:
 
 ```python
-from awaits.config import config
+from awaits import config
 
 
 # Для примера устанавливаем частоту опроса задачи в декораторе @awaitable на значение 0.5 сек.
