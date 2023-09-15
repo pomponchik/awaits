@@ -1,5 +1,12 @@
 # awaits - делаем работу с асинхронными / многопоточными приложениями проще
 
+[![Downloads](https://static.pepy.tech/badge/awaits/month)](https://pepy.tech/project/awaits)
+[![Downloads](https://static.pepy.tech/badge/awaits)](https://pepy.tech/project/awaits)
+[![codecov](https://codecov.io/gh/pomponchik/awaits/graph/badge.svg?token=8iyMsUaLvN)](https://codecov.io/gh/pomponchik/awaits)
+[![Test-Package](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml/badge.svg)](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml)
+[![Python versions](https://img.shields.io/pypi/pyversions/awaits.svg)](https://pypi.python.org/pypi/awaits)
+[![PyPI version](https://badge.fury.io/py/awaits.svg)](https://badge.fury.io/py/awaits)
+
 Данная библиотека решает 3 проблемы:
 
 - Асинхронное программирование с использованием синтаксиса async / await теряет смысл, если в коде часто встречаются куски с "тяжелыми" вычислениями или иными задачами, которые блокируют event-loop. Зато теперь вы можете навесить на такую "тяжелую" функцию декоратор [```@awaitable```](#декоратор-awaitable) и она станет корутиной, которая будет исполняться в отдельном потоке, не блокируя event-loop. Во всем остальном это будет совершенно обычная корутина.
