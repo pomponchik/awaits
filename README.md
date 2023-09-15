@@ -34,7 +34,7 @@ $ pip install awaits
 
 ```python
 import asyncio
-from awaits.awaitable import awaitable
+from awaits import awaitable
 
 
 @awaitable
@@ -51,7 +51,7 @@ print(asyncio.run(sum(2, 2)))
 Если ваша функция ничего не возвращает, к ней можно применить другой декоратор, [```@shoot```](#декоратор-shoot):
 
 ```python
-from awaits.shoot import shoot
+from awaits import shoot
 
 
 @shoot
@@ -212,7 +212,7 @@ if task.error:
 Декоратор ```@awaitable``` превращает обычную функцию в корутину, т. е. в функцию, с которой можно работать через await-синтаксис Python. Давайте попробуем создать такую функцию:
 
 ```python
-from awaits.awaitable import awaitable
+from awaits import awaitable
 
 
 @awaitable
@@ -252,7 +252,7 @@ def heavy_math_function(x, y):
 Этот декоратор проще, чем [```@awaitable```](#декоратор-awaitable). Обернутая им функция будет просто "отстрелена" в группу потоков, без ожидания результата. Возвращен при этом будет объект класса [```Task```](#об-объекте-задачи), что позволяет вручную отслеживать статус выполнения.
 
 ```python
-from awaits.shoot import shoot
+from awaits import shoot
 
 
 @shoot
@@ -284,7 +284,7 @@ def other_heavy_math_function(x, y):
 Вы можете настроить параметры по умолчанию самостоятельно. Для этого необходимо вызвать метод ```set``` у класса ```config```:
 
 ```python
-from awaits.config import config
+from awaits import config
 
 
 # Для примера устанавливаем частоту опроса задачи в декораторе @awaitable на значение 0.5 сек.
