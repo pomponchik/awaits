@@ -17,6 +17,15 @@ def test_await_awaitable_function_without_brackets_without_arguments():
     assert run(function()) == value
 
 
+def test_await_awaitable_function_without_brackets_without_arguments_raise_exception():
+    @awaitable
+    def function():
+        raise ValueError
+
+    with pytest.raises(ValueError):
+        run(function())
+
+
 def test_await_awaitable_function_without_brackets_with_arguments():
     first_value = 777
     second_value = 999
