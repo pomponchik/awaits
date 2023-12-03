@@ -1,4 +1,5 @@
 from asyncio import run
+from threading import get_ident
 
 import pytest
 
@@ -24,6 +25,14 @@ def test_await_awaitable_function_without_brackets_without_arguments_raise_excep
 
     with pytest.raises(ValueError):
         run(function())
+
+
+def test_check_thread_id():
+    @awaitable
+    def function():
+        return get_ident()
+
+    assert run(function()) != get_ident()
 
 
 def test_await_awaitable_function_without_brackets_with_arguments():
