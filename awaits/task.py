@@ -17,7 +17,9 @@ class Task:
         self.done = True
 
     def __repr__(self):
-        string_wrapper = lambda x: f'"{x}"' if type(x) is str else str(x)
+        def string_wrapper(some_value):
+            return f'"{some_value}"' if isinstance(some_value, str) else str(some_value)
+        
         function_name = self.function.__name__
         args = ', '.join([string_wrapper(x) for x in self.args])
         kwargs = ', '.join([f'{key}={string_wrapper(value)}' for key, value in self.kwargs.items()])
