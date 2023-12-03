@@ -29,22 +29,22 @@ class AbstractPool:
             workers.append(worker)
         return workers
 
-    def create_worker(self, index):
+    def create_worker(self, index):  # pragma: no cover
         raise NotImplementedError('The create workers operation is not defined.')
 
-    def activate_workers(self, workers=None):
+    def activate_workers(self, workers=None):  # pragma: no cover
         raise NotImplementedError('The activate workers operation is not defined.')
 
-    def queue_size(self):
+    def queue_size(self):  # pragma: no cover
         raise NotImplementedError('The queue_size operation is not defined.')
 
-    def get_queue_class(self):
+    def get_queue_class(self):  # pragma: no cover
         raise NotImplementedError('The queue class is not defined.')
 
-    def put_to_queue(self, task):
+    def put_to_queue(self, task):  # pragma: no cover
         raise NotImplementedError('The put operation is not defined.')
 
-    def get_where_to_execute(self):
+    def get_where_to_execute(self):  # pragma: no cover
         raise NotImplementedError('The class to execute workers is not defined.')
 
     def __len__(self):
