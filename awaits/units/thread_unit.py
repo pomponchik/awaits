@@ -19,5 +19,5 @@ class ThreadUnit(AbstractUnit):
                 task = self.queue.get()
                 task.do()
                 self.queue.task_done()
-            except Exception as e:
+            except Exception:
                 pass

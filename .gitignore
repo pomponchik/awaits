@@ -7,3 +7,6 @@ dist
 build
 venv
 .pytest_cache
+.coverage
+.ruff_cache
+.mypy_cache
