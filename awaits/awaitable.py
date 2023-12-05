@@ -7,6 +7,7 @@ from awaits.utils.end_of_wrappers import end_of_wrappers
 
 def awaitable(*args, pool=None, delay=None):
     pool = get_pool_for_decorator(pool)
+
     def wrapper_of_wrapper(func):
         @wraps(func)
         async def wrapper(*args, **kwargs):
@@ -18,4 +19,5 @@ def awaitable(*args, pool=None, delay=None):
                 raise task.exception
             return task.result
         return wrapper
+    
     return end_of_wrappers(args, wrapper_of_wrapper)
