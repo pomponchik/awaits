@@ -3,7 +3,7 @@ from awaits.threads_pools_room import ThreadsPoolsRoom
 
 
 class RoomKeeper:
-    def __init__(self):
+    def __init__(self) -> None:
         if not hasattr(self, 'room'):
             pool_size = CommonData().pool_size
             self.room = ThreadsPoolsRoom(pool_size)
