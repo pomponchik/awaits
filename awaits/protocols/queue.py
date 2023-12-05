@@ -12,3 +12,9 @@ class QueueProtocol(Protocol):
 
     def qsize(self) -> int:
         ...  # pragma: no cover
+
+    def get(self) -> Any:
+        ...  # pragma: no cover
+
+    def task_done(self) -> None:
+        ...  # pragma: no cover
