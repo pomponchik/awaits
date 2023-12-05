@@ -1,6 +1,7 @@
 from queue import Queue
 from threading import Thread
 
+from awaits.units.abstract_unit import AbstractUnit
 from awaits.units.thread_unit import ThreadUnit
 from awaits.pools.abstract_pool import AbstractPool
 
@@ -22,7 +23,7 @@ class ThreadsPool(AbstractPool):
             worker.daemon = True
             worker.start()
 
-    def create_worker(self, index):
+    def create_worker(self, index: int) -> AbstractUnit:
         where = self.get_where_to_execute()
         worker_class = self.get_worker_class()
         worker = where(target=worker_class(self.queue, self, index).run)

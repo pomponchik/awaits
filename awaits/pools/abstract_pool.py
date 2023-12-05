@@ -32,7 +32,7 @@ class AbstractPool(ABC):
         active = 'active' if self.active else 'not active'
         return f'<{self.__class__.__name__} pool object of {len(self)} workers #{id(self)}, {active}>'
 
-    def __getitem__(self, index: int):
+    def __getitem__(self, index: int) -> AbstractUnit:
         if not isinstance(index, int):
             raise ValueError('Key must be an integer number.')
         if index >= len(self) or index < 0:
@@ -61,7 +61,7 @@ class AbstractPool(ABC):
         ... # pragma: no cover
 
     @abstractmethod
-    def create_worker(self, index: int):
+    def create_worker(self, index: int) -> AbstractUnit:
         ... # pragma: no cover
 
     @abstractmethod
