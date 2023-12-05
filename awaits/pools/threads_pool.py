@@ -1,5 +1,6 @@
 from queue import Queue
 from threading import Thread
+
 from awaits.units.thread_unit import ThreadUnit
 from awaits.pools.abstract_pool import AbstractPool
 
