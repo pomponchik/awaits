@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Optional
 
 try:
     from functools import cached_property
@@ -8,6 +8,7 @@ except ImportError:
 
 from awaits.task import Task
 from awaits.protocols.queue import QueueProtocol
+from awaits.units.abstract_unit import AbstractUnit
 
 
 class AbstractPool(ABC):
@@ -47,10 +48,10 @@ class AbstractPool(ABC):
         self.queue.put_nowait(task)
         return task
 
-    def create_workers(self, number_of_workers=None, base_number=0) -> List:
-        number_of_workers = self.size if number_of_workers is None else number_of_workers
+    def create_workers(self, number_of_workers: Optional[int] = None, base_number=0) -> List[AbstractUnit]:
+        pool_size = self.size if number_of_workers is None else number_of_workers
         workers = []
-        for number in range(base_number, number_of_workers):
+        for number in range(base_number, pool_size):
             worker = self.create_worker(number)
             workers.append(worker)
         return workers

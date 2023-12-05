@@ -6,7 +6,7 @@ from awaits.pools.abstract_pool import AbstractPool
 
 
 class ThreadsPool(AbstractPool):
-    def get_queue(self):
+    def get_queue(self) -> Queue:
         return Queue()
 
     def get_where_to_execute(self):
