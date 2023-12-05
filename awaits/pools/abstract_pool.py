@@ -26,7 +26,7 @@ class AbstractPool(ABC):
         if not isinstance(index, int):
             raise ValueError('Key must be an integer number.')
         if index >= len(self):
-            raise IndexError(f'Lenth of the pool is equal {len(self)}.')
+            raise IndexError(f'The size of the pool is equal {len(self)}.')
         return self.workers[index]
 
     def get_queue(self):
