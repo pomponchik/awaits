@@ -4,7 +4,7 @@ from awaits.task import Task
 
 
 class AbstractPool(ABC):
-    def __init__(self, pool_size):
+    def __init__(self, pool_size: int) -> None:
         self.active = False
         self.pool_size = pool_size
         self.queue = self.get_queue()
@@ -12,20 +12,20 @@ class AbstractPool(ABC):
         self.activate_workers()
         self.active = True
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.pool_size
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'{self.__class__.__name__}({len(self)})'
 
-    def __str__(self):
+    def __str__(self) -> str:
         active = 'active' if self.active else 'not active'
         return f'<{self.__class__.__name__} pool object of {len(self)} workers #{id(self)}, {active}>'
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int):
         if not isinstance(index, int):
             raise ValueError('Key must be an integer number.')
-        if index >= len(self):
+        if index >= len(self) or index < 0:
             raise IndexError(f'The size of the pool is equal {len(self)}.')
         return self.workers[index]
 
