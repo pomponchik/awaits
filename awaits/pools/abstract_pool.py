@@ -19,7 +19,6 @@ class AbstractPool(ABC):
         self.active = False
         self.size = size
         self.workers = self.create_workers()
-        self.activate_workers()
         self.active = True
 
     def __len__(self) -> int:
