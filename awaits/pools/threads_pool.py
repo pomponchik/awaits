@@ -10,8 +10,7 @@ class ThreadsPool(AbstractPool):
         ПРИМЕРНЫЙ размер очереди, см. документацию:
         https://docs.python.org/3/library/queue.html#queue.Queue.qsize
         """
-        size = self.queue.qsize()
-        return size
+        return self.queue.qsize()
 
     def get_queue_class(self):
         return Queue
