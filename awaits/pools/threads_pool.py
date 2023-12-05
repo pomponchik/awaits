@@ -3,7 +3,6 @@ from threading import Thread
 
 from awaits.units.thread_unit import ThreadUnit
 from awaits.pools.abstract_pool import AbstractPool
-from awaits.task import Task
 
 
 class ThreadsPool(AbstractPool):
