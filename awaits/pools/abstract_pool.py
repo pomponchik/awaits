@@ -4,24 +4,25 @@ from typing import List
 try:
     from functools import cached_property
 except ImportError:
-    from functools import lru_cache
-    
-    def cached_property(method):
-        return property(lru_cache(method))
+    from cached_property import cached_property
 
 from awaits.task import Task
+from awaits.protocols.queue import QueueProtocol
 
 
 class AbstractPool(ABC):
-    def __init__(self, pool_size: int) -> None:
+    def __init__(self, size: int) -> None:
+        if size <= 0:
+            raise ValueError('The size of the pool must be greater than zero.')
+
         self.active = False
-        self.pool_size = pool_size
+        self.size = size
         self.workers = self.create_workers()
         self.activate_workers()
         self.active = True
 
     def __len__(self) -> int:
-        return self.pool_size
+        return self.size
 
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({len(self)})'
@@ -38,19 +39,16 @@ class AbstractPool(ABC):
         return self.workers[index]
 
     @cached_property
-    def queue(self):
-        self.get_queue()
-
-    def get_queue(self):
-        ... # pragma: no cover
+    def queue(self) -> QueueProtocol:
+        return self.get_queue()
 
     def do(self, function, *args, **kwargs):
         task = Task(function, *args, **kwargs)
-        self.put_to_queue(task)
+        self.queue.put_nowait(task)
         return task
 
     def create_workers(self, number_of_workers=None, base_number=0) -> List:
-        number_of_workers = self.pool_size if number_of_workers is None else number_of_workers
+        number_of_workers = self.size if number_of_workers is None else number_of_workers
         workers = []
         for number in range(base_number, number_of_workers):
             worker = self.create_worker(number)
@@ -58,19 +56,15 @@ class AbstractPool(ABC):
         return workers
 
     @abstractmethod
+    def get_queue(self) -> QueueProtocol:
+        ... # pragma: no cover
+
+    @abstractmethod
     def create_worker(self, index: int):
         ... # pragma: no cover
 
     @abstractmethod
     def activate_workers(self, workers=None):
-        ... # pragma: no cover
-
-    @abstractmethod
-    def queue_size(self) -> int:
-        ... # pragma: no cover
-
-    @abstractmethod
-    def put_to_queue(self, task: Task) -> None:
         ... # pragma: no cover
 
     @abstractmethod

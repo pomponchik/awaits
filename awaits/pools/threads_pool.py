@@ -7,14 +7,7 @@ from awaits.task import Task
 
 
 class ThreadsPool(AbstractPool):
-    def queue_size(self):
-        """
-        ПРИМЕРНЫЙ размер очереди, см. документацию:
-        https://docs.python.org/3/library/queue.html#queue.Queue.qsize
-        """
-        return self.queue.qsize()
-
-    def _queue(self):
+    def get_queue(self):
         return Queue()
 
     def get_where_to_execute(self):
@@ -22,9 +15,6 @@ class ThreadsPool(AbstractPool):
 
     def get_worker_class(self):
         return ThreadUnit
-
-    def put_to_queue(self, task: Task) -> None:
-        self.queue.put_nowait(task)
 
     def activate_workers(self, workers=None):
         if not workers:
