@@ -65,9 +65,5 @@ class AbstractPool(ABC):
         ... # pragma: no cover
 
     @abstractmethod
-    def activate_workers(self, workers=None):
-        ... # pragma: no cover
-
-    @abstractmethod
     def get_where_to_execute(self):
         ... # pragma: no cover
