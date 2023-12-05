@@ -53,21 +53,21 @@ class AbstractPool(ABC):
         ... # pragma: no cover
 
     @abstractmethod
-    def activate_workers(self, workers=None):  # pragma: no cover
+    def activate_workers(self, workers=None):
         ... # pragma: no cover
 
     @abstractmethod
-    def queue_size(self):  # pragma: no cover
+    def queue_size(self):
         ... # pragma: no cover
 
     @abstractmethod
-    def get_queue_class(self):  # pragma: no cover
+    def get_queue_class(self):
         ... # pragma: no cover
 
     @abstractmethod
-    def put_to_queue(self, task):  # pragma: no cover
+    def put_to_queue(self, task):
         ... # pragma: no cover
 
     @abstractmethod
-    def get_where_to_execute(self):  # pragma: no cover
+    def get_where_to_execute(self):
         ... # pragma: no cover
