@@ -11,7 +11,7 @@ class AbstractPool(ABC):
         self.workers = self.create_workers()
         self.activate_workers()
         self.active = True
-    
+
     def __len__(self):
         return self.pool_size
 
@@ -25,7 +25,7 @@ class AbstractPool(ABC):
     def __getitem__(self, index):
         if not isinstance(index, int):
             raise ValueError('Key must be an integer number.')
-        if index > len(self):
+        if index >= len(self):
             raise IndexError(f'Lenth of the pool is equal {len(self)}.')
         return self.workers[index]
 
