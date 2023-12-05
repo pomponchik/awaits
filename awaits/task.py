@@ -1,4 +1,4 @@
-from typing import Callable, Any, Any
+from typing import Callable, Any
 
 class Task:
     def __init__(self, function: Callable[[Any], Any], *args: Any, **kwargs: Any) -> None:
