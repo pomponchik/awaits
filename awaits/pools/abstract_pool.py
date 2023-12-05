@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import List
 
 from awaits.task import Task
 
@@ -40,7 +41,7 @@ class AbstractPool(ABC):
         self.put_to_queue(task)
         return task
 
-    def create_workers(self, number_of_workers=None, base_number=0):
+    def create_workers(self, number_of_workers=None, base_number=0) -> List:
         number_of_workers = self.pool_size if number_of_workers is None else number_of_workers
         workers = []
         for number in range(base_number, number_of_workers):
@@ -49,7 +50,7 @@ class AbstractPool(ABC):
         return workers
 
     @abstractmethod
-    def create_worker(self, index):
+    def create_worker(self, index: int):
         ... # pragma: no cover
 
     @abstractmethod
