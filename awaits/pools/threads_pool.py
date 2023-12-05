@@ -3,6 +3,7 @@ from threading import Thread
 
 from awaits.units.thread_unit import ThreadUnit
 from awaits.pools.abstract_pool import AbstractPool
+from awaits.task import Task
 
 
 class ThreadsPool(AbstractPool):
@@ -13,8 +14,8 @@ class ThreadsPool(AbstractPool):
         """
         return self.queue.qsize()
 
-    def get_queue_class(self):
-        return Queue
+    def _queue(self):
+        return Queue()
 
     def get_where_to_execute(self):
         return Thread
@@ -22,7 +23,7 @@ class ThreadsPool(AbstractPool):
     def get_worker_class(self):
         return ThreadUnit
 
-    def put_to_queue(self, task):
+    def put_to_queue(self, task: Task) -> None:
         self.queue.put_nowait(task)
 
     def activate_workers(self, workers=None):

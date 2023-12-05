@@ -1,6 +1,14 @@
 from abc import ABC, abstractmethod
 from typing import List
 
+try:
+    from functools import cached_property
+except ImportError:
+    from functools import lru_cache
+    
+    def cached_property(method):
+        return property(lru_cache(method))
+
 from awaits.task import Task
 
 
@@ -8,7 +16,6 @@ class AbstractPool(ABC):
     def __init__(self, pool_size: int) -> None:
         self.active = False
         self.pool_size = pool_size
-        self.queue = self.get_queue()
         self.workers = self.create_workers()
         self.activate_workers()
         self.active = True
@@ -30,11 +37,12 @@ class AbstractPool(ABC):
             raise IndexError(f'The size of the pool is equal {len(self)}.')
         return self.workers[index]
 
+    @cached_property
+    def queue(self):
+        self.get_queue()
+
     def get_queue(self):
-        if not hasattr(self, 'queue'):
-            queue_class = self.get_queue_class()
-            self.queue = queue_class()
-        return self.queue
+        ... # pragma: no cover
 
     def do(self, function, *args, **kwargs):
         task = Task(function, *args, **kwargs)
@@ -58,15 +66,11 @@ class AbstractPool(ABC):
         ... # pragma: no cover
 
     @abstractmethod
-    def queue_size(self):
+    def queue_size(self) -> int:
         ... # pragma: no cover
 
     @abstractmethod
-    def get_queue_class(self):
-        ... # pragma: no cover
-
-    @abstractmethod
-    def put_to_queue(self, task):
+    def put_to_queue(self, task: Task) -> None:
         ... # pragma: no cover
 
     @abstractmethod
