@@ -50,6 +50,7 @@ class AbstractPool(ABC):
     def create_workers(self, number_of_workers: Optional[int] = None, base_number=0) -> List[AbstractUnit]:
         pool_size = self.size if number_of_workers is None else number_of_workers
         workers = []
+
         for number in range(base_number, pool_size):
             worker = self.create_worker(number)
             workers.append(worker)
@@ -61,8 +62,4 @@ class AbstractPool(ABC):
 
     @abstractmethod
     def create_worker(self, index: int) -> AbstractUnit:
-        ... # pragma: no cover
-
-    @abstractmethod
-    def get_where_to_execute(self):
         ... # pragma: no cover
