@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/pomponchik/contextif/develop/docs/assets/logo_2.svg)
+![logo](https://raw.githubusercontent.com/pomponchik/awaits/develop/docs/assets/logo_2.svg)
 
 # awaits - делаем работу с асинхронными / многопоточными приложениями проще
 
