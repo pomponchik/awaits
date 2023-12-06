@@ -32,7 +32,7 @@
      inkscape:window-x="1016"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="g282" />
   <defs
      id="defs1">
     <linearGradient
@@ -167,13 +167,16 @@
        y="11.757719"
        inkscape:highlight-color="#000000"
        transform="rotate(-121.01)" />
-    <text
-       xml:space="preserve"
-       transform="matrix(0.24550532,0,0,0.24143661,20.164255,-100.40588)"
-       id="text4"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:106.667px;font-family:'Gujarati MT';-inkscape-font-specification:'Gujarati MT';white-space:pre;shape-inside:url(#rect4);display:inline;fill:#dd0965;fill-opacity:1;stroke:url(#linearGradient282)"><tspan
-         x="98.65625"
-         y="569.82726"
-         id="tspan1">AWAITS</tspan></text>
+    <g
+       id="g282">
+      <text
+         xml:space="preserve"
+         transform="matrix(0.24550532,0,0,0.24143661,20.164255,-100.40588)"
+         id="text4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:106.667px;font-family:'Gujarati MT';-inkscape-font-specification:'Gujarati MT';white-space:pre;shape-inside:url(#rect4);display:inline;fill:#dd0965;fill-opacity:1;stroke:url(#linearGradient282)"><tspan
+           x="98.65625"
+           y="569.82726"
+           id="tspan1">AWAITS</tspan></text>
+    </g>
   </g>
 </svg>
