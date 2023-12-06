@@ -1,3 +1,5 @@
+![logo](https://raw.githubusercontent.com/pomponchik/contextif/develop/docs/assets/logo_2.svg)
+
 # awaits - делаем работу с асинхронными / многопоточными приложениями проще
 
 [![Downloads](https://static.pepy.tech/badge/awaits/month)](https://pepy.tech/project/awaits)
