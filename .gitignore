@@ -10,3 +10,4 @@ venv
 .coverage
 .ruff_cache
 .mypy_cache
+test.py

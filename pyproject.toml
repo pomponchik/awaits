@@ -4,13 +4,17 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'awaits'
-version = '0.0.6'
+version = '0.0.7'
 authors = [
   { name='Evgeniy Blinov', email='zheni-b@yandex.ru' },
 ]
 description = 'async + threads + decorators = ?'
 readme = 'README.md'
 requires-python = '>=3.7'
+dependencies = [
+    'cached-property ; python_version < "3.8"',
+    'typing_extensions ; python_version < "3.8"',
+]
 classifiers = [
   'Operating System :: MacOS :: MacOS X',
   'Operating System :: Microsoft :: Windows',

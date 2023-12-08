@@ -5,19 +5,13 @@ class ThreadUnit(AbstractUnit):
     """
     Экземпляр класса соответствует одному потоку. Здесь выполняются таски.
     """
-    def __init__(self, queue, pool, index):
-        self.index = index
-        self.queue = queue
-        self.pool = pool
-
-    def run(self):
+    def run(self) -> None:
         """
         Принимаем из очереди таски и выполняем их.
         """
         while True:
             try:
                 task = self.queue.get()
-                task.do()
+                task()
+            finally:
                 self.queue.task_done()
-            except Exception:
-                pass

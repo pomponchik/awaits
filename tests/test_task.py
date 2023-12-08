@@ -14,7 +14,7 @@ def test_run_simple_function():
     assert task.error == False
     assert task.exception is None
 
-    task.do()
+    task()
 
     assert task.done == True
     assert task.result == value
@@ -37,7 +37,7 @@ def test_run_function_with_arguments():
     assert task.error == False
     assert task.exception is None
 
-    task.do()
+    task()
 
     assert task.done == True
     assert task.result == first_value + second_value + third_value
@@ -60,9 +60,19 @@ def test_run_function_that_raise_exception():
     assert task.error == False
     assert task.exception is None
 
-    task.do()
+    task()
 
     assert task.done == True
     assert task.result == None
     assert task.error == True
     assert isinstance(task.exception, ValueError)
+
+
+def test_repr_task():
+    def function(a, b, c):
+        return
+
+    task = Task(function, 1, 2, c="kek")
+
+    assert repr(task) == f'Task(function, 1, 2, c="kek")'
+    assert str(task) == f'Task(function, 1, 2, c="kek")'

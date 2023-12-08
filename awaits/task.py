@@ -1,5 +1,7 @@
+from typing import Callable, Any
+
 class Task:
-    def __init__(self, function, *args, **kwargs):
+    def __init__(self, function: Callable[[Any], Any], *args: Any, **kwargs: Any) -> None:
         self.function = function
         self.args = args
         self.kwargs = kwargs
@@ -8,7 +10,7 @@ class Task:
         self.result = None
         self.exception = None
 
-    def do(self):
+    def __call__(self) -> None:
         try:
             self.result = self.function(*(self.args), **(self.kwargs))
         except Exception as e:
@@ -16,10 +18,10 @@ class Task:
             self.exception = e
         self.done = True
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         def string_wrapper(some_value):
-            return f'"{some_value}"' if isinstance(some_value, str) else str(some_value)
-        
+            return f'"{some_value}"' if isinstance(some_value, str) else repr(some_value)
+
         function_name = self.function.__name__
         args = ', '.join([string_wrapper(x) for x in self.args])
         kwargs = ', '.join([f'{key}={string_wrapper(value)}' for key, value in self.kwargs.items()])

@@ -1,65 +1,65 @@
+from abc import ABC, abstractmethod
+from typing import List, Optional
+
+try:
+    from functools import cached_property
+except ImportError:
+    from cached_property import cached_property
+
 from awaits.task import Task
+from awaits.protocols.queue import QueueProtocol
+from awaits.units.abstract_unit import AbstractUnit
 
 
-class AbstractPool:
-    def __init__(self, pool_size):
+class AbstractPool(ABC):
+    def __init__(self, size: int) -> None:
+        if size <= 0:
+            raise ValueError('The size of the pool must be greater than zero.')
+
         self.active = False
-        self.pool_size = pool_size
-        self.queue = self.get_queue()
+        self.size = size
         self.workers = self.create_workers()
-        self.activate_workers()
         self.active = True
 
-    def get_queue(self):
-        if not hasattr(self, 'queue'):
-            queue_class = self.get_queue_class()
-            self.queue = queue_class()
-        return self.queue
+    def __len__(self) -> int:
+        return self.size
+
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({len(self)})'
+
+    def __str__(self) -> str:
+        active = 'active' if self.active else 'not active'
+        return f'<{self.__class__.__name__} pool object of {len(self)} workers #{id(self)}, {active}>'
+
+    def __getitem__(self, index: int) -> AbstractUnit:
+        if not isinstance(index, int):
+            raise ValueError('Key must be an integer number.')
+        if index >= len(self) or index < 0:
+            raise IndexError(f'The size of the pool is equal {len(self)}.')
+        return self.workers[index]
+
+    @cached_property
+    def queue(self) -> QueueProtocol:
+        return self.get_queue()
 
     def do(self, function, *args, **kwargs):
         task = Task(function, *args, **kwargs)
-        self.put_to_queue(task)
+        self.queue.put_nowait(task)
         return task
 
-    def create_workers(self, number_of_workers=None, base_number=0):
-        number_of_workers = self.pool_size if number_of_workers is None else number_of_workers
+    def create_workers(self, number_of_workers: Optional[int] = None, base_number=0) -> List[AbstractUnit]:
+        pool_size = self.size if number_of_workers is None else number_of_workers
         workers = []
-        for number in range(base_number, number_of_workers):
+
+        for number in range(base_number, pool_size):
             worker = self.create_worker(number)
             workers.append(worker)
         return workers
 
-    def create_worker(self, index):  # pragma: no cover
-        raise NotImplementedError('The create workers operation is not defined.')
+    @abstractmethod
+    def get_queue(self) -> QueueProtocol:
+        ... # pragma: no cover
 
-    def activate_workers(self, workers=None):  # pragma: no cover
-        raise NotImplementedError('The activate workers operation is not defined.')
-
-    def queue_size(self):  # pragma: no cover
-        raise NotImplementedError('The queue_size operation is not defined.')
-
-    def get_queue_class(self):  # pragma: no cover
-        raise NotImplementedError('The queue class is not defined.')
-
-    def put_to_queue(self, task):  # pragma: no cover
-        raise NotImplementedError('The put operation is not defined.')
-
-    def get_where_to_execute(self):  # pragma: no cover
-        raise NotImplementedError('The class to execute workers is not defined.')
-
-    def __len__(self):
-        return self.pool_size
-
-    def __repr__(self):
-        return f'{self.__class__.__name__}({len(self)})'
-
-    def __str__(self):
-        active = 'active' if self.active else 'not active'
-        return f'<{self.__class__.__name__} pool object of {len(self)} workers #{id(self)}, {active}>'
-
-    def __getitem__(self, index):
-        if not isinstance(index, int):
-            raise ValueError('Key must be an integer number.')
-        if index > len(self):
-            raise IndexError(f'Lenth of the pool is equal {len(self)}.')
-        return self.workers[index]
+    @abstractmethod
+    def create_worker(self, index: int) -> AbstractUnit:
+        ... # pragma: no cover

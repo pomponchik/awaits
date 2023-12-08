@@ -1,9 +1,11 @@
+from typing import Union, Optional
+
 from awaits.errors import IncorrectUseOfTheDecoratorError
 from awaits.pools.abstract_pool import AbstractPool
 from awaits.room_keeper import RoomKeeper
 
 
-def get_pool_for_decorator(pool):
+def get_pool_for_decorator(pool: Optional[Union[str, AbstractPool]]):
     if pool is None:
         return RoomKeeper().room['base']
     elif isinstance(pool, str):
