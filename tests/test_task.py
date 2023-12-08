@@ -66,3 +66,12 @@ def test_run_function_that_raise_exception():
     assert task.result == None
     assert task.error == True
     assert isinstance(task.exception, ValueError)
+
+
+def test_repr_task():
+    def function(a, b, c):
+        return
+
+    task = Task(function, 1, 2, c="kek")
+
+    assert repr(task) == f'Task(function, 1, 2, c="kek")'

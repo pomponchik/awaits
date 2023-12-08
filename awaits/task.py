@@ -20,7 +20,7 @@ class Task:
 
     def __repr__(self) -> str:
         def string_wrapper(some_value):
-            return f'"{some_value}"' if isinstance(some_value, str) else str(some_value)
+            return f'"{some_value}"' if isinstance(some_value, str) else repr(some_value)
 
         function_name = self.function.__name__
         args = ', '.join([string_wrapper(x) for x in self.args])
