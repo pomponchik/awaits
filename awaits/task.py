@@ -10,7 +10,7 @@ class Task:
         self.result = None
         self.exception = None
 
-    def do(self) -> None:
+    def __call__(self) -> None:
         try:
             self.result = self.function(*(self.args), **(self.kwargs))
         except Exception as e:

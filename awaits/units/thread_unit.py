@@ -12,7 +12,6 @@ class ThreadUnit(AbstractUnit):
         while True:
             try:
                 task = self.queue.get()
-                task.do()
+                task()
+            finally:
                 self.queue.task_done()
-            except Exception:
-                pass
