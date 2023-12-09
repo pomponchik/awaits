@@ -16,10 +16,8 @@ class AbstractPool(ABC):
         if size <= 0:
             raise ValueError('The size of the pool must be greater than zero.')
 
-        self.active = False
         self.size = size
         self.workers = self.create_workers()
-        self.active = True
 
     def __len__(self) -> int:
         return self.size
@@ -28,8 +26,7 @@ class AbstractPool(ABC):
         return f'{self.__class__.__name__}({len(self)})'
 
     def __str__(self) -> str:
-        active = 'active' if self.active else 'not active'
-        return f'<{self.__class__.__name__} pool object of {len(self)} workers #{id(self)}, {active}>'
+        return f'<{self.__class__.__name__} pool object of {len(self)} workers #{id(self)}>'
 
     def __getitem__(self, index: int) -> AbstractUnit:
         if not isinstance(index, int):

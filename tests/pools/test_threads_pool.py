@@ -19,4 +19,4 @@ def test_repr_of_pool():
 def test_str_of_pool():
     pool = ThreadsPool(5)
 
-    assert str(pool) == f'<ThreadsPool pool object of 5 workers #{id(pool)}, active>'
+    assert str(pool) == f'<ThreadsPool pool object of 5 workers #{id(pool)}>'
