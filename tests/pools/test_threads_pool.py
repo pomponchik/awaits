@@ -1,6 +1,7 @@
 import pytest
 
 from awaits.pools.threads_pool import ThreadsPool
+from awaits.units.thread_unit import ThreadUnit
 
 
 def test_create_pull_with_zero_workers():
@@ -20,3 +21,22 @@ def test_str_of_pool():
     pool = ThreadsPool(5)
 
     assert str(pool) == f'<ThreadsPool pool object of 5 workers #{id(pool)}>'
+
+
+def test_getitem_with_wrong_index():
+    pool = ThreadsPool(5)
+
+    with pytest.raises(IndexError):
+        pool[-1]
+
+    with pytest.raises(IndexError):
+        pool[5]
+
+    with pytest.raises(IndexError):
+        pool[6]
+
+    with pytest.raises(IndexError):
+        pool[150]
+
+    with pytest.raises(ValueError):
+        pool['kek']
