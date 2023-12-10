@@ -11,7 +11,4 @@ class ThreadsPool(AbstractPool):
         return Queue()
 
     def create_worker(self, index: int) -> AbstractUnit:
-        worker = Thread(target=ThreadUnit(self.queue, self, index).run)
-        worker.daemon = True
-        worker.start()
-        return worker
+        return ThreadUnit(self.queue, self, index)

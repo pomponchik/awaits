@@ -40,3 +40,9 @@ def test_getitem_with_wrong_index():
 
     with pytest.raises(ValueError):
         pool['kek']
+
+
+def test_getitem_with_good_index():
+    pool = ThreadsPool(5)
+
+    assert isinstance(pool[0], ThreadUnit)
