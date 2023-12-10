@@ -8,6 +8,11 @@ class AbstractUnit(ABC):
         self.index = index
         self.queue = queue
         self.pool = pool
+        self.activate()
+
+    @abstractmethod
+    def activate(self) -> None:
+        ... # pragma: no cover
 
     @abstractmethod
     def run(self) -> None:
