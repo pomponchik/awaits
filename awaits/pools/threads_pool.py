@@ -1,5 +1,4 @@
 from queue import Queue
-from threading import Thread
 
 from awaits.units.abstract_unit import AbstractUnit
 from awaits.units.thread_unit import ThreadUnit
