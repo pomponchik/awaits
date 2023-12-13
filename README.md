@@ -1,6 +1,6 @@
 ![logo](https://raw.githubusercontent.com/pomponchik/awaits/develop/docs/assets/logo_2.svg)
 
-# awaits - делаем работу с асинхронными / многопоточными приложениями проще
+# awaits: давайте упростим многопоточку и асинхронщину
 
 [![Downloads](https://static.pepy.tech/badge/awaits/month)](https://pepy.tech/project/awaits)
 [![Downloads](https://static.pepy.tech/badge/awaits)](https://pepy.tech/project/awaits)
