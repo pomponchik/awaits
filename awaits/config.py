@@ -1,3 +1,5 @@
+from typing import Dict, Tuple, Union
+
 from awaits.common_data import CommonData
 
 
@@ -5,13 +7,13 @@ class config(object):
     """
     Установка глобальных параметров.
     """
-    allowed_settings = {
+    allowed_settings: Dict[str, Tuple[Union[int, float], ...]] = {
         'pool_size': (int, ),
         'delay': (int, float, ),
     }
 
     @staticmethod
-    def set(**kwargs):
+    def set(**kwargs: Union[int, float]) -> None:
         new_kwargs = {}
         for key, value in kwargs.items():
             if key not in config.allowed_settings.keys():

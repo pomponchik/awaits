@@ -33,6 +33,6 @@ class Task:
             content.append(args)
         if kwargs:
             content.append(kwargs)
-        content = ', '.join(content)
-        result = f'Task({content})'
+        joined_content = ', '.join(content)
+        result = f'Task({joined_content})'
         return result
