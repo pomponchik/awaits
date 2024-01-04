@@ -5,7 +5,7 @@ from awaits.pools.abstract_pool import AbstractPool
 from awaits.room_keeper import RoomKeeper
 
 
-def get_pool_for_decorator(pool: Optional[Union[str, AbstractPool]]):
+def get_pool_for_decorator(pool: Optional[Union[str, AbstractPool]]) -> AbstractPool:
     if pool is None:
         return RoomKeeper().room['base']
     elif isinstance(pool, str):
