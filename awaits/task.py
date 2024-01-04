@@ -1,4 +1,4 @@
-from typing import Tuple, Dict, Callable, Any, Optional
+from typing import Tuple, Dict, Callable, Union, Any, Optional
 
 
 class Task:
@@ -20,7 +20,7 @@ class Task:
         self.done = True
 
     def __repr__(self) -> str:
-        def string_wrapper(some_value):
+        def string_wrapper(some_value: Union[str, Any]) -> str:
             return f'"{some_value}"' if isinstance(some_value, str) else repr(some_value)
 
         function_name = self.function.__name__

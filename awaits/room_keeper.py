@@ -8,7 +8,7 @@ class RoomKeeper:
             pool_size = CommonData().pool_size
             self.room = ThreadsPoolsRoom(pool_size)
 
-    def __new__(cls, **kwargs):
+    def __new__(cls, **kwargs) -> 'RoomKeeper':
         if not hasattr(cls, 'instance'):
             cls.instance = super(RoomKeeper, cls).__new__(cls)
         return cls.instance

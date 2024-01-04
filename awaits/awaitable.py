@@ -1,6 +1,6 @@
 from functools import wraps
 from asyncio import sleep
-from typing import Callable, Any, Optional, Union
+from typing import Awaitable, Callable, Any, Optional, Union
 
 from awaits.common_data import CommonData
 from awaits.utils.get_pool_for_decorator import get_pool_for_decorator
