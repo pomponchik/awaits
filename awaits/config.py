@@ -3,7 +3,7 @@ from typing import Dict, Tuple, Union
 from awaits.common_data import CommonData
 
 
-class config(object):
+class config:
     """
     Установка глобальных параметров.
     """
