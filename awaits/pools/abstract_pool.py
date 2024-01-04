@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import List, Callable, Any, Optional
 
 try:
     from functools import cached_property
@@ -39,12 +39,12 @@ class AbstractPool(ABC):
     def queue(self) -> QueueProtocol:
         return self.get_queue()
 
-    def do(self, function, *args, **kwargs):
+    def do(self, function: Callable[[Any], Any], *args: Any, **kwargs: Any) -> Task:
         task = Task(function, *args, **kwargs)
         self.queue.put_nowait(task)
         return task
 
-    def create_workers(self, number_of_workers: Optional[int] = None, base_number=0) -> List[AbstractUnit]:
+    def create_workers(self, number_of_workers: Optional[int] = None, base_number: int = 0) -> List[AbstractUnit]:
         pool_size = self.size if number_of_workers is None else number_of_workers
         workers = []
 

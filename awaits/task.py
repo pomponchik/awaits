@@ -1,14 +1,15 @@
-from typing import Callable, Any
+from typing import Tuple, Dict, Callable, Any, Optional
+
 
 class Task:
     def __init__(self, function: Callable[[Any], Any], *args: Any, **kwargs: Any) -> None:
-        self.function = function
-        self.args = args
-        self.kwargs = kwargs
-        self.done = False
-        self.error = False
-        self.result = None
-        self.exception = None
+        self.function: Callable[[Any], Any] = function
+        self.args: Tuple[Any] = args
+        self.kwargs: Dict[str, Any] = kwargs
+        self.done: bool = False
+        self.error: bool = False
+        self.result: Optional[Any] = None
+        self.exception: Optional[BaseException] = None
 
     def __call__(self) -> None:
         try:

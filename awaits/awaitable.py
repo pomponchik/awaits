@@ -8,7 +8,7 @@ from awaits.utils.end_of_wrappers import end_of_wrappers
 from awaits.pools.abstract_pool import AbstractPool
 
 
-def awaitable(*args, pool: Optional[Union[str, AbstractPool]] = None, delay: Optional[Union[int, float]] = None):
+def awaitable(*args, pool: Optional[Union[str, AbstractPool]] = None, delay: Optional[Union[int, float]] = None) -> Union[Callable[[Callable[[Any], Any]], Callable[[Any], Awaitable[Any]]], Callable[[Any], Awaitable[Any]]]:
     pool = get_pool_for_decorator(pool)
 
     def wrapper_of_wrapper(function: Callable[[Any], Any]):
