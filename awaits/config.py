@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, Union
+from typing import Dict, Tuple, Type, Union
 
 from awaits.common_data import CommonData
 
@@ -7,7 +7,7 @@ class config:
     """
     Установка глобальных параметров.
     """
-    allowed_settings: Dict[str, Tuple[Union[int, float], ...]] = {
+    allowed_settings: Dict[str, Tuple[Union[Type[int], Type[float]], ...]] = {
         'pool_size': (int, ),
         'delay': (int, float, ),
     }
