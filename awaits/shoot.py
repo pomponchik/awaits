@@ -15,6 +15,7 @@ def shoot(*args: Callable[[Any], Any], pool: Optional[Union[str, AbstractPool]] 
         def wrapper(*args: Any, **kwargs: Any) -> Task:
             task = pool.do(function, *args, **kwargs)
             return task
+        
         return wrapper
 
     return end_of_wrappers(args, wrapper_of_wrapper)
