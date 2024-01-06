@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List, Callable, Any, Optional
 
 try:
-    from functools import cached_property
+    from functools import cached_property  # type: ignore[attr-defined]
 except ImportError:
     from cached_property import cached_property  # type: ignore[import-not-found, no-redef, unused-ignore]
 
