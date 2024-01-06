@@ -27,8 +27,11 @@ class config:
                     is_allowed = True
 
             if not is_allowed:
-                allowed_types_in_line = ', '.join(allowed_types)
-                raise TypeError(f'Variable "{key}" has not one of types: {allowed_types_in_line}.')
+                if len(allowed_types) == 1:
+                    raise TypeError(f'Variable "{value}" has not the type {allowed_types[0].__name__}.')
+                else:
+                    allowed_types_in_line = ', '.join([allowed_type.__name__ for allowed_type in allowed_types])
+                    raise TypeError(f'Variable "{value}" has not one of types: {allowed_types_in_line}.')
 
             new_kwargs[key] = value
 
