@@ -29,6 +29,7 @@ class config:
             if not is_allowed:
                 allowed_types = ', '.join(allowed_types)
                 raise TypeError(f'Variable "{key}" has not one of types: {allowed_types}.')
+            
             new_kwargs[key] = value
-        
+
         CommonData(**new_kwargs)
