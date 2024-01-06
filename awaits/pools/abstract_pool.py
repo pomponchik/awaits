@@ -4,7 +4,7 @@ from typing import List, Callable, Any, Optional
 try:
     from functools import cached_property
 except ImportError:
-    from cached_property import cached_property  # type: ignore[import-not-found, no-redef]
+    from cached_property import cached_property  # type: ignore[import-not-found, no-redef, unused-ignore]
 
 from awaits.task import Task
 from awaits.protocols.queue import QueueProtocol
