@@ -16,9 +16,9 @@ class config:
     def set(**kwargs: Union[int, float]) -> None:
         new_kwargs = {}
         for key, value in kwargs.items():
-            if key not in config.allowed_settings.keys():
-                raise ValueError(f'"{key}" variable is not allowed for the awaits settings.')
-            allowed_types = config.allowed_settings.get(key)
+            if key not in config.allowed_settings:
+                raise KeyError(f'"{key}" variable is not allowed for the awaits settings.')
+            allowed_types = config.allowed_settings[key]
             is_allowed = False
             for one in allowed_types:
                 if isinstance(value, one):
