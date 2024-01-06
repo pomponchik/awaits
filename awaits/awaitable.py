@@ -13,13 +13,13 @@ def awaitable(*args: Callable[[Any], Any], pool: Optional[Union[str, AbstractPoo
 
     def wrapper_of_wrapper(function: Callable[[Any], Any]) -> Callable[[Any], Awaitable[Any]]:
         @wraps(function)
-        async def wrapper(*args: Any, **kwargs: Any) -> Awaitable[Any]:
+        async def wrapper(*args: Any, **kwargs: Any) -> Any:
             sleep_time = CommonData().delay if delay is None else delay
             task = pool.do(function, *args, **kwargs)
             while not task.done:
                 await sleep(sleep_time)
             if task.error:
-                raise task.exception
+                raise task.exception  # type: ignore[misc]
             return task.result
         return wrapper
 
