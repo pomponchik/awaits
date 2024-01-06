@@ -27,9 +27,9 @@ class config:
                     is_allowed = True
 
             if not is_allowed:
-                allowed_types = ', '.join(allowed_types)
-                raise TypeError(f'Variable "{key}" has not one of types: {allowed_types}.')
-            
+                allowed_types_in_line = ', '.join(allowed_types)
+                raise TypeError(f'Variable "{key}" has not one of types: {allowed_types_in_line}.')
+
             new_kwargs[key] = value
 
         CommonData(**new_kwargs)
