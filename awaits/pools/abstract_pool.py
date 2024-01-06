@@ -35,7 +35,7 @@ class AbstractPool(ABC):
             raise IndexError(f'The size of the pool is equal {len(self)}.')
         return self.workers[index]
 
-    @cached_property
+    @cached_property  # type: ignore[misc, unused-ignore]
     def queue(self) -> QueueProtocol:
         return self.get_queue()
 
