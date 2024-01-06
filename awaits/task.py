@@ -4,7 +4,7 @@ from typing import Tuple, Dict, Callable, Union, Any, Optional
 class Task:
     def __init__(self, function: Callable[[Any], Any], *args: Any, **kwargs: Any) -> None:
         self.function: Callable[[Any], Any] = function
-        self.args: Tuple[Any] = args
+        self.args: Tuple[Any, ...] = args
         self.kwargs: Dict[str, Any] = kwargs
         self.done: bool = False
         self.error: bool = False
