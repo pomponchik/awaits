@@ -6,7 +6,7 @@
 [![Downloads](https://static.pepy.tech/badge/awaits)](https://pepy.tech/project/awaits)
 [![codecov](https://codecov.io/gh/pomponchik/awaits/graph/badge.svg?token=A5VJ4PUED7)](https://codecov.io/gh/pomponchik/awaits)
 [![Hits-of-Code](https://hitsofcode.com/github/pomponchik/awaits?branch=main)](https://hitsofcode.com/github/pomponchik/awaits/view?branch=main)
-[![Test-Package](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml/badge.svg)](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml)
+[![Tests](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml/badge.svg)](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml)
 [![Python versions](https://img.shields.io/pypi/pyversions/awaits.svg)](https://pypi.python.org/pypi/awaits)
 [![PyPI version](https://badge.fury.io/py/awaits.svg)](https://badge.fury.io/py/awaits)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
