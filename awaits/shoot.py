@@ -1,5 +1,5 @@
 from functools import wraps
-from typing import Awaitable, Callable, Union, Optional, Any
+from typing import Callable, Union, Optional, Any
 
 from awaits.utils.get_pool_for_decorator import get_pool_for_decorator
 from awaits.utils.end_of_wrappers import end_of_wrappers

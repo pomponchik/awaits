@@ -1,4 +1,4 @@
-from typing import Tuple, Callable, Awaitable, Any, Union
+from typing import Tuple, Callable, Any, Union
 
 from awaits.errors import IncorrectUseOfTheDecoratorError
 
