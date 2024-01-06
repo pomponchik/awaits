@@ -33,6 +33,9 @@ classifiers = [
   'Framework :: AsyncIO',
 ]
 
+[tool.setuptools.package-data]
+"awaits" = ["py.typed"]
+
 [project.urls]
 'Source' = 'https://github.com/pomponchik/awaits'
 'Tracker' = 'https://github.com/pomponchik/awaits/issues'
