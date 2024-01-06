@@ -9,6 +9,7 @@
 [![Tests](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml/badge.svg)](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml)
 [![Python versions](https://img.shields.io/pypi/pyversions/awaits.svg)](https://pypi.python.org/pypi/awaits)
 [![PyPI version](https://badge.fury.io/py/awaits.svg)](https://badge.fury.io/py/awaits)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 Данная библиотека решает 3 проблемы:
