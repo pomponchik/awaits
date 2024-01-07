@@ -4,7 +4,7 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'awaits'
-version = '0.0.8'
+version = '0.0.9'
 authors = [
   { name='Evgeniy Blinov', email='zheni-b@yandex.ru' },
 ]
@@ -32,6 +32,9 @@ classifiers = [
   'Topic :: Software Development :: Libraries',
   'Framework :: AsyncIO',
 ]
+
+[tool.setuptools.package-data]
+"awaits" = ["py.typed"]
 
 [project.urls]
 'Source' = 'https://github.com/pomponchik/awaits'

@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import List, Callable, Any, Optional
 
 try:
-    from functools import cached_property
+    from functools import cached_property  # type: ignore[attr-defined, unused-ignore]
 except ImportError:
-    from cached_property import cached_property
+    from cached_property import cached_property  # type: ignore[import-not-found, no-redef, import, unused-ignore]
 
 from awaits.task import Task
 from awaits.protocols.queue import QueueProtocol
@@ -35,16 +35,16 @@ class AbstractPool(ABC):
             raise IndexError(f'The size of the pool is equal {len(self)}.')
         return self.workers[index]
 
-    @cached_property
+    @cached_property  # type: ignore[misc, unused-ignore]
     def queue(self) -> QueueProtocol:
         return self.get_queue()
 
-    def do(self, function, *args, **kwargs):
+    def do(self, function: Callable[[Any], Any], *args: Any, **kwargs: Any) -> Task:
         task = Task(function, *args, **kwargs)
         self.queue.put_nowait(task)
         return task
 
-    def create_workers(self, number_of_workers: Optional[int] = None, base_number=0) -> List[AbstractUnit]:
+    def create_workers(self, number_of_workers: Optional[int] = None, base_number: int = 0) -> List[AbstractUnit]:
         pool_size = self.size if number_of_workers is None else number_of_workers
         workers = []
 

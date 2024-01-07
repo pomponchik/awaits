@@ -4,7 +4,7 @@ from awaits.protocols.queue import QueueProtocol
 
 
 class AbstractUnit(ABC):
-    def __init__(self, queue: QueueProtocol, pool: 'AbstractPool', index: int) -> None:  # noqa: F821
+    def __init__(self, queue: QueueProtocol, pool: 'AbstractPool', index: int) -> None:  # type: ignore[name-defined] # noqa: F821
         self.index = index
         self.queue = queue
         self.pool = pool

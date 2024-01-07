@@ -1,14 +1,15 @@
-from typing import Callable, Any
+from typing import Tuple, Dict, Callable, Union, Any, Optional
+
 
 class Task:
     def __init__(self, function: Callable[[Any], Any], *args: Any, **kwargs: Any) -> None:
-        self.function = function
-        self.args = args
-        self.kwargs = kwargs
-        self.done = False
-        self.error = False
-        self.result = None
-        self.exception = None
+        self.function: Callable[[Any], Any] = function
+        self.args: Tuple[Any, ...] = args
+        self.kwargs: Dict[str, Any] = kwargs
+        self.done: bool = False
+        self.error: bool = False
+        self.result: Optional[Any] = None
+        self.exception: Optional[BaseException] = None
 
     def __call__(self) -> None:
         try:
@@ -19,7 +20,7 @@ class Task:
         self.done = True
 
     def __repr__(self) -> str:
-        def string_wrapper(some_value):
+        def string_wrapper(some_value: Union[str, Any]) -> str:
             return f'"{some_value}"' if isinstance(some_value, str) else repr(some_value)
 
         function_name = self.function.__name__
@@ -32,6 +33,6 @@ class Task:
             content.append(args)
         if kwargs:
             content.append(kwargs)
-        content = ', '.join(content)
-        result = f'Task({content})'
+        joined_content = ', '.join(content)
+        result = f'Task({joined_content})'
         return result
