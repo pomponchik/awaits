@@ -1,7 +1,5 @@
 ![logo](https://raw.githubusercontent.com/pomponchik/awaits/develop/docs/assets/logo_2.svg)
 
-# awaits: давайте упростим многопоточку и асинхронщину
-
 [![Downloads](https://static.pepy.tech/badge/awaits/month)](https://pepy.tech/project/awaits)
 [![Downloads](https://static.pepy.tech/badge/awaits)](https://pepy.tech/project/awaits)
 [![codecov](https://codecov.io/gh/pomponchik/awaits/graph/badge.svg?token=A5VJ4PUED7)](https://codecov.io/gh/pomponchik/awaits)
