@@ -39,7 +39,7 @@ class AbstractPool(ABC):
     def queue(self) -> QueueProtocol:
         return self.get_queue()
 
-    def do(self, function: Callable[[Any], Any], *args: Any, **kwargs: Any) -> Task:
+    def do(self, function: Callable[..., Any], *args: Any, **kwargs: Any) -> Task:
         task = Task(function, *args, **kwargs)
         self.queue.put_nowait(task)
         return task

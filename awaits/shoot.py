@@ -7,10 +7,10 @@ from awaits.pools.abstract_pool import AbstractPool
 from awaits.task import Task
 
 
-def shoot(*args: Callable[[Any], Any], pool: Optional[Union[str, AbstractPool]] = None) -> Union[Callable[[Callable[[Any], Any]], Callable[[Any], Any]], Callable[[Any], Any]]:
+def shoot(*args: Callable[[Any], Any], pool: Optional[Union[str, AbstractPool]] = None) -> Union[Callable[[Callable[..., Any]], Callable[..., Any]], Callable[..., Any]]:
     pool = get_pool_for_decorator(pool)
 
-    def wrapper_of_wrapper(function: Callable[[Any], Any]) -> Callable[[Any], Task]:
+    def wrapper_of_wrapper(function: Callable[[Any], Any]) -> Callable[..., Task]:
         @wraps(function)
         def wrapper(*args: Any, **kwargs: Any) -> Task:
             task = pool.do(function, *args, **kwargs)

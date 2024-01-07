@@ -3,7 +3,7 @@ from typing import Tuple, Callable, Any, Union
 from awaits.errors import IncorrectUseOfTheDecoratorError
 
 
-def end_of_wrappers(args: Tuple[Callable[[Any], Any], ...], wrapper: Callable[[Callable[[Any], Any]], Callable[[Any], Any]]) -> Union[Callable[[Callable[[Any], Any]], Callable[[Any], Any]], Callable[[Any], Any]]:
+def end_of_wrappers(args: Tuple[Callable[..., Any], ...], wrapper: Callable[[Callable[..., Any]], Callable[..., Any]]) -> Union[Callable[[Callable[..., Any]], Callable[..., Any]], Callable[..., Any]]:
     """
     Определяем, как вызван декоратор - как фабрика декораторов (т. е. без позиционных аргументов) или как непосредственный декоратор.
     """
