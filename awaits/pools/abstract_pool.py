@@ -1,10 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List, Callable, Any, Optional
-
-try:
-    from functools import cached_property  # type: ignore[attr-defined, unused-ignore]
-except ImportError:
-    from cached_property import cached_property  # type: ignore[import-not-found, no-redef, import, unused-ignore]
+from functools import cached_property  # type: ignore[attr-defined, unused-ignore]
 
 from awaits.task import Task
 from awaits.protocols.queue import QueueProtocol

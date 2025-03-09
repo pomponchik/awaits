@@ -11,10 +11,6 @@ authors = [
 description = 'async + threads + decorators = ?'
 readme = 'README.md'
 requires-python = '>=3.8'
-dependencies = [
-    'cached-property ; python_version < "3.8"',
-    'typing_extensions ; python_version < "3.8"',
-]
 classifiers = [
   'Operating System :: MacOS :: MacOS X',
   'Operating System :: Microsoft :: Windows',
