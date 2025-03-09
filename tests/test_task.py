@@ -74,5 +74,5 @@ def test_repr_task():
 
     task = Task(function, 1, 2, c="kek")
 
-    assert repr(task) == f'Task(function, 1, 2, c="kek")'
-    assert str(task) == f'Task(function, 1, 2, c="kek")'
+    assert repr(task) == 'Task(function, 1, 2, c="kek")'
+    assert str(task) == 'Task(function, 1, 2, c="kek")'
