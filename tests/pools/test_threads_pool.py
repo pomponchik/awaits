@@ -56,4 +56,4 @@ def test_threads_was_really_created():
 
     pool = ThreadsPool(number_of_creating_threads)  # noqa: F841
 
-    assert active_count() == number_of_threads_before + number_of_creating_thread
+    assert active_count() == number_of_threads_before + number_of_creating_threads
