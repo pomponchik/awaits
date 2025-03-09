@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List, Callable, Any, Optional
-from functools import cached_property  # type: ignore[attr-defined]
+from functools import cached_property
 
 from awaits.task import Task
 from awaits.protocols.queue import QueueProtocol
@@ -31,7 +31,7 @@ class AbstractPool(ABC):
             raise IndexError(f'The size of the pool is equal {len(self)}.')
         return self.workers[index]
 
-    @cached_property  # type: ignore[misc]
+    @cached_property
     def queue(self) -> QueueProtocol:
         return self.get_queue()
 
