@@ -63,7 +63,7 @@ def test_run_function_that_raise_exception():
     task()
 
     assert task.done == True
-    assert task.result == None
+    assert task.result is None
     assert task.error == True
     assert isinstance(task.exception, ValueError)
 
