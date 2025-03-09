@@ -101,14 +101,3 @@ def test_await_awaitable_function_with_brackets_and_pool_object_without_argument
         return value
 
     assert run(function()) == value
-
-
-def test_await_awaitable_function_with_brackets_and_pool_object_without_arguments():
-    value = 777
-    pool = RoomKeeper().room['test_await_awaitable_function_with_brackets_and_pool_object_without_arguments']
-
-    @awaitable(pool=pool)
-    def function():
-        return value
-
-    assert run(function()) == value
