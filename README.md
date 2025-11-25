@@ -2,7 +2,7 @@
 
 [![Downloads](https://static.pepy.tech/badge/awaits/month)](https://pepy.tech/project/awaits)
 [![Downloads](https://static.pepy.tech/badge/awaits)](https://pepy.tech/project/awaits)
-[![codecov](https://codecov.io/gh/pomponchik/awaits/graph/badge.svg?token=A5VJ4PUED7)](https://codecov.io/gh/pomponchik/awaits)
+[![Coverage Status](https://coveralls.io/repos/github/pomponchik/awaits/badge.svg?branch=main)](https://coveralls.io/github/pomponchik/awaits?branch=main)
 [![Hits-of-Code](https://hitsofcode.com/github/pomponchik/awaits?branch=main)](https://hitsofcode.com/github/pomponchik/awaits/view?branch=main)
 [![Tests](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml/badge.svg)](https://github.com/pomponchik/awaits/actions/workflows/tests_and_coverage.yml)
 [![Python versions](https://img.shields.io/pypi/pyversions/awaits.svg)](https://pypi.python.org/pypi/awaits)
@@ -45,7 +45,6 @@ $ pip install awaits
 import asyncio
 from awaits import awaitable
 
-
 @awaitable
 def sum(a, b):
   # Какой-то сложный датасаенз. Что-то, что вычисляется долго и мешает вашему event-loop'у жить.
@@ -61,7 +60,6 @@ print(asyncio.run(sum(2, 2)))
 
 ```python
 from awaits import shoot
-
 
 @shoot
 def hello():
@@ -174,7 +172,6 @@ pool = room['some_key']
 ```python
 from awaits.task import Task
 
-
 def hello_something(something, sign='!'):
   hello_string = f'Hello {something}{sign}'
   print(hello_string)
@@ -223,7 +220,6 @@ if task.error:
 ```python
 from awaits import awaitable
 
-
 @awaitable
 def heavy_math_function(x, y):
   return x * y
@@ -263,7 +259,6 @@ def heavy_math_function(x, y):
 ```python
 from awaits import shoot
 
-
 @shoot
 def other_heavy_math_function(x, y):
   return x * y
@@ -294,7 +289,6 @@ def other_heavy_math_function(x, y):
 
 ```python
 from awaits import config
-
 
 # Для примера устанавливаем частоту опроса задачи в декораторе @awaitable на значение 0.5 сек.
 config.set(delay=10.5)

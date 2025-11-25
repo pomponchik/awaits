@@ -1,7 +1,7 @@
 wheel==0.41.2
 twine==6.1.0
 build==1.2.2.post1
-pytest==7.4.3
+pytest==8.0.2
 coverage==7.6.1
 ruff==0.9.9
 mypy==1.14.1
