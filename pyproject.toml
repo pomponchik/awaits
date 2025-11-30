@@ -11,6 +11,9 @@ authors = [
 description = 'async + threads + decorators = ?'
 readme = 'README.md'
 requires-python = '>=3.8'
+dependencies = [
+    'skelet>=0.0.2'
+]
 classifiers = [
   'Operating System :: MacOS :: MacOS X',
   'Operating System :: Microsoft :: Windows',
