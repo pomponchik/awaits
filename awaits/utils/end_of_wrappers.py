@@ -1,10 +1,10 @@
 from typing import Any, Callable, Tuple, Union
 
 from awaits.errors import IncorrectUseOfTheDecoratorError
-from awaits.types import P
+from awaits.types import FunctionParameters
 
 
-def end_of_wrappers(args: Tuple[Callable[P, Any], ...], wrapper: Callable[[Callable[P, Any]], Callable[P, Any]]) -> Union[Callable[[Callable[P, Any]], Callable[P, Any]], Callable[P, Any]]:
+def end_of_wrappers(args: Tuple[Callable[FunctionParameters, Any], ...], wrapper: Callable[[Callable[FunctionParameters, Any]], Callable[FunctionParameters, Any]]) -> Union[Callable[[Callable[FunctionParameters, Any]], Callable[FunctionParameters, Any]], Callable[FunctionParameters, Any]]:
     """
     Определяем, как вызван декоратор - как фабрика декораторов (т. е. без позиционных аргументов) или как непосредственный декоратор.
     """

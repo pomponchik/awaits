@@ -6,5 +6,5 @@ try:
 except ImportError:
     from typing_extensions import ParamSpec  # type: ignore[assignment]
 
-P = ParamSpec('P')
-R = TypeVar('R')
+FunctionParameters = ParamSpec('FunctionParameters')
+FunctionResult = TypeVar('R')
