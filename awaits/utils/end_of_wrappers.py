@@ -1,7 +1,7 @@
 from typing import Any, Callable, Tuple, Union
 
 from awaits.errors import IncorrectUseOfTheDecoratorError
-from awaits.typing import P
+from awaits.types import P
 
 
 def end_of_wrappers(args: Tuple[Callable[P, Any], ...], wrapper: Callable[[Callable[P, Any]], Callable[P, Any]]) -> Union[Callable[[Callable[P, Any]], Callable[P, Any]], Callable[P, Any]]:
