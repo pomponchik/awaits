@@ -50,10 +50,10 @@ def test_run_function_that_raise_exception():
     second_value = 999
     third_value = 5
 
-    def function(a, b, c=third_value):
+    def function(_a, _b, _c=third_value):
         raise ValueError
 
-    task = Task(function, first_value, second_value, c=third_value)
+    task = Task(function, first_value, second_value, _c=third_value)
 
     assert task.done == False
     assert task.result is None
@@ -69,7 +69,7 @@ def test_run_function_that_raise_exception():
 
 
 def test_repr_task():
-    def function(a, b, c):
+    def function(_a, _b, _c):
         return
 
     task = Task(function, 1, 2, c="kek")

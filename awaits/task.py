@@ -14,7 +14,7 @@ class Task:
     def __call__(self) -> None:
         try:
             self.result = self.function(*(self.args), **(self.kwargs))
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             self.error = True
             self.exception = e
         self.done = True
@@ -34,5 +34,4 @@ class Task:
         if kwargs:
             content.append(kwargs)
         joined_content = ', '.join(content)
-        result = f'Task({joined_content})'
-        return result
+        return f'Task({joined_content})'

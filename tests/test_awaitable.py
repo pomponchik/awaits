@@ -21,9 +21,9 @@ def test_await_awaitable_function_without_brackets_without_arguments():
 def test_await_awaitable_function_without_brackets_without_arguments_raise_exception():
     @awaitable
     def function():
-        raise ValueError
+        raise ValueError("Test error")
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="Test error"):
         run(function())
 
 
