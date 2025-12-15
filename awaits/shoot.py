@@ -1,10 +1,10 @@
 from functools import wraps
-from typing import Callable, Union, Optional, Any
+from typing import Any, Callable, Optional, Union
 
-from awaits.utils.get_pool_for_decorator import get_pool_for_decorator
-from awaits.utils.end_of_wrappers import end_of_wrappers
 from awaits.pools.abstract_pool import AbstractPool
 from awaits.task import Task
+from awaits.utils.end_of_wrappers import end_of_wrappers
+from awaits.utils.get_pool_for_decorator import get_pool_for_decorator
 
 
 def shoot(*args: Callable[[Any], Any], pool: Optional[Union[str, AbstractPool]] = None) -> Union[Callable[[Callable[..., Any]], Callable[..., Any]], Callable[..., Any]]:

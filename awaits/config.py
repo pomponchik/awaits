@@ -1,6 +1,6 @@
 from typing import Union
 
-from skelet import Storage, Field, for_tool
+from skelet import Field, Storage, for_tool
 
 
 class Config(Storage, sources=for_tool('my_tool_name')):

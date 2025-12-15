@@ -1,16 +1,11 @@
-from functools import wraps
 from asyncio import sleep
-from typing import Awaitable, Callable, Any, Optional, Union
-
-try:
-    from typing import ParamSpec
-except ImportError:
-    from typing_extensions import ParamSpec
+from functools import wraps
+from typing import Any, Awaitable, Callable, Optional, Union
 
 from awaits.config import config
-from awaits.utils.get_pool_for_decorator import get_pool_for_decorator
-from awaits.utils.end_of_wrappers import end_of_wrappers
 from awaits.pools.abstract_pool import AbstractPool
+from awaits.utils.end_of_wrappers import end_of_wrappers
+from awaits.utils.get_pool_for_decorator import get_pool_for_decorator
 
 
 def awaitable(*args: Callable[[Any], Any], pool: Optional[Union[str, AbstractPool]] = None, delay: Optional[Union[int, float]] = None) -> Union[Callable[[Callable[..., Any]], Callable[..., Awaitable[Any]]], Callable[..., Awaitable[Any]]]:

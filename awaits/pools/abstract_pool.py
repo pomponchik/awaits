@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from typing import List, Callable, Any, Optional
 from functools import cached_property
+from typing import Any, Callable, List, Optional
 
-from awaits.task import Task
 from awaits.protocols.queue import QueueProtocol
+from awaits.task import Task
 from awaits.units.abstract_unit import AbstractUnit
 
 

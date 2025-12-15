@@ -1,4 +1,4 @@
-from typing import Tuple, Callable, Any, Union
+from typing import Any, Callable, Tuple, Union
 
 from awaits.errors import IncorrectUseOfTheDecoratorError
 
@@ -9,6 +9,6 @@ def end_of_wrappers(args: Tuple[Callable[..., Any], ...], wrapper: Callable[[Cal
     """
     if not len(args):
         return wrapper
-    elif len(args) == 1 and callable(args[0]):
+    if len(args) == 1 and callable(args[0]):
         return wrapper(args[0])
     raise IncorrectUseOfTheDecoratorError('You used the awaitable decorator incorrectly. Read the documentation.')

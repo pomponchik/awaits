@@ -1,4 +1,4 @@
-from typing import Tuple, Dict, Callable, Union, Any, Optional
+from typing import Any, Callable, Dict, Optional, Tuple, Union
 
 
 class Task:
