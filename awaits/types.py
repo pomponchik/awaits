@@ -7,4 +7,4 @@ except ImportError:
     from typing_extensions import ParamSpec  # type: ignore[assignment]
 
 FunctionParameters = ParamSpec('FunctionParameters')
-FunctionResult = TypeVar('R')
+FunctionResult = TypeVar('FunctionResult')
