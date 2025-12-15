@@ -2,6 +2,7 @@ from asyncio import run
 from threading import get_ident
 
 import pytest
+from full_match import match
 
 from awaits import awaitable
 from awaits.errors import IncorrectUseOfTheDecoratorError
@@ -23,7 +24,7 @@ def test_await_awaitable_function_without_brackets_without_arguments_raise_excep
     def function():
         raise ValueError("Test error")
 
-    with pytest.raises(ValueError, match="Test error"):
+    with pytest.raises(ValueError, match=match("Test error")):
         run(function())
 
 
