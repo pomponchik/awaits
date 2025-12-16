@@ -2,7 +2,7 @@
 from typing import TypeVar
 
 try:
-    from typing import ParamSpec
+    from typing import ParamSpec  # type: ignore[attr-defined]
 except ImportError:
     from typing_extensions import ParamSpec  # type: ignore[assignment]
 
