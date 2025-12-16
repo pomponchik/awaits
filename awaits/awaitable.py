@@ -10,7 +10,8 @@ from awaits.utils.end_of_wrappers import end_of_wrappers
 from awaits.utils.get_pool_for_decorator import get_pool_for_decorator
 
 
-def awaitable(*args: Callable[FunctionParameters, FunctionResult], pool: Optional[Union[str, AbstractPool]] = None, delay: Optional[Union[int, float]] = None) -> Union[Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Awaitable[FunctionResult]]], Callable[FunctionParameters, Awaitable[FunctionResult]], Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Task]]]:
+# TODO: delete the "type: ignore" if the minimal python version is > 3.9
+def awaitable(*args: Callable[FunctionParameters, FunctionResult], pool: Optional[Union[str, AbstractPool]] = None, delay: Optional[Union[int, float]] = None) -> Union[Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Awaitable[FunctionResult]]], Callable[FunctionParameters, Awaitable[FunctionResult]], Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Task]]]:  # type: ignore[valid-type]
     pool = get_pool_for_decorator(pool)
 
     def wrapper_of_wrapper(function: Callable[FunctionParameters, FunctionResult]) -> Callable[FunctionParameters, Awaitable[FunctionResult]]:
