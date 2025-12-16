@@ -1,16 +1,12 @@
 import pytest
+from full_match import match
 
 from awaits import config
 
 
 def test_set_incompatible_typed_variable():
-    with pytest.raises(TypeError, match='Variable "kek" has not the type int.'):
-        config.set(pool_size='kek')
+    with pytest.raises(TypeError, match=match("The value 'kek' (str) of the \"pool_size\" field does not match the type int.")):
+        config.pool_size = 'kek'
 
-    with pytest.raises(TypeError, match='Variable "kek" has not one of types: int, float.'):
-        config.set(delay='kek')
-
-
-def test_unknown_key_name():
-    with pytest.raises(KeyError, match='"kek" variable is not allowed for the awaits settings.'):
-        config.set(kek='kek')
+    with pytest.raises(TypeError, match=match('The value \'kek\' (str) of the "delay" field does not match the type Union.')):
+        config.delay = 'kek'

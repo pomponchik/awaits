@@ -1,13 +1,14 @@
 from threading import active_count
 
 import pytest
+from full_match import match
 
 from awaits.pools.threads_pool import ThreadsPool
 from awaits.units.thread_unit import ThreadUnit
 
 
 def test_create_pull_with_zero_workers():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match=match("The size of the pool must be greater than zero.")):
         ThreadsPool(0)
 
 
@@ -40,7 +41,7 @@ def test_getitem_with_wrong_index():
     with pytest.raises(IndexError):
         pool[150]
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match=match("Key must be an integer number.")):
         pool['kek']
 
 

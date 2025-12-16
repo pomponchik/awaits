@@ -1,9 +1,9 @@
 from queue import Queue
 
-from awaits.units.abstract_unit import AbstractUnit
-from awaits.units.thread_unit import ThreadUnit
 from awaits.pools.abstract_pool import AbstractPool
 from awaits.protocols.queue import QueueProtocol
+from awaits.units.abstract_unit import AbstractUnit
+from awaits.units.thread_unit import ThreadUnit
 
 
 class ThreadsPool(AbstractPool):

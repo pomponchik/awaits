@@ -1,4 +1,4 @@
-from typing import Protocol, Any
+from typing import Any, Protocol  # noqa: A005
 
 
 class QueueProtocol(Protocol):

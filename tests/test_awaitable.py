@@ -2,6 +2,7 @@ from asyncio import run
 from threading import get_ident
 
 import pytest
+from full_match import match
 
 from awaits import awaitable
 from awaits.errors import IncorrectUseOfTheDecoratorError
@@ -21,9 +22,9 @@ def test_await_awaitable_function_without_brackets_without_arguments():
 def test_await_awaitable_function_without_brackets_without_arguments_raise_exception():
     @awaitable
     def function():
-        raise ValueError
+        raise ValueError("Test error")
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match=match("Test error")):
         run(function())
 
 
@@ -101,3 +102,12 @@ def test_await_awaitable_function_with_brackets_and_pool_object_without_argument
         return value
 
     assert run(function()) == value
+
+
+def test_awaitable_decorator_incorrect_usage():
+    """Test that using the awaitable decorator incorrectly raises an exception."""
+    with pytest.raises(IncorrectUseOfTheDecoratorError, match=match('You used the awaitable decorator incorrectly. Read the documentation.')):
+        # This should trigger the error path in end_of_wrappers when more than 1 callable is passed
+        @awaitable(lambda: None, lambda: None)
+        def function():
+            return 42
