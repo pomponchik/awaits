@@ -5,7 +5,7 @@ from awaits.task import Task
 from awaits.types import FunctionParameters, FunctionResult
 
 
-def end_of_wrappers(args: Tuple[Callable[FunctionParameters, FunctionResult], ...], wrapper: Union[Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Awaitable[FunctionResult]]], Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Task]]]) -> Union[Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Awaitable[FunctionResult]]], Callable[FunctionParameters, Awaitable[FunctionResult]], Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Task]]]:
+def end_of_wrappers(args: Tuple[Callable[FunctionParameters, FunctionResult], ...], wrapper: Union[Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Awaitable[FunctionResult]]], Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Task]]]) -> Union[Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Awaitable[FunctionResult]]], Callable[FunctionParameters, Awaitable[FunctionResult]], Callable[[Callable[FunctionParameters, FunctionResult]], Callable[FunctionParameters, Task]]]:  # type: ignore[valid-type, unused-ignore]
     """
     Определяем, как вызван декоратор - как фабрика декораторов (т. е. без позиционных аргументов) или как непосредственный декоратор.
     """
