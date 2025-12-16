@@ -12,5 +12,5 @@ def end_of_wrappers(args: Tuple[Callable[FunctionParameters, FunctionResult], ..
     if not len(args):
         return wrapper
     if len(args) == 1 and callable(args[0]):
-        return wrapper(args[0])  # type: ignore[return-value]
+        return wrapper(args[0])  # type: ignore[return-value, unused-ignore]
     raise IncorrectUseOfTheDecoratorError('You used the awaitable decorator incorrectly. Read the documentation.')
