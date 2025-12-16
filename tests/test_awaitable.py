@@ -102,3 +102,12 @@ def test_await_awaitable_function_with_brackets_and_pool_object_without_argument
         return value
 
     assert run(function()) == value
+
+
+def test_awaitable_decorator_incorrect_usage():
+    """Test that using the awaitable decorator incorrectly raises an exception."""
+    with pytest.raises(IncorrectUseOfTheDecoratorError, match=match('You used the awaitable decorator incorrectly. Read the documentation.')):
+        # This should trigger the error path in end_of_wrappers when more than 1 callable is passed
+        @awaitable(lambda: None, lambda: None)
+        def function():
+            return 42
